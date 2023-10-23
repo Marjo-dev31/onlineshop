@@ -1,11 +1,11 @@
 
 
 function getSignup (req, res) {
-    res.render('signup')
+    res.render('customer/auth/signup')
 };
 
 function getLogin (req, res) {
-    res.render('login');
+    
 };
 
 
