@@ -13,7 +13,7 @@ async function signup(req, res) {
         req.body.postal, 
         req.body.city
         );
-
+        
 await user.signup();
 
 res.redirect('/login');
@@ -21,6 +21,7 @@ res.redirect('/login');
 
 
 function getLogin(req, res) {
+res.render('customer/auth/login')
 };
 
 

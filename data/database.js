@@ -1,5 +1,4 @@
 const mongodb = require('mongodb');
-const { get } = require('../routes/auth.routes');
 
 const MongoCLient = mongodb.MongoClient;
 
