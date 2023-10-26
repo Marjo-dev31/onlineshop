@@ -6,9 +6,9 @@ function getSignup(req, res) {
 };
 
 async function signup(req, res) {
-    if (!res.locals.isAuth) {
-        return res.status('401').render('401');
-    };
+    // if (!res.locals.isAuth) {
+    //     return res.status('401').render('401');
+    // };
 
     const user = new User(
         req.body.email,
@@ -34,6 +34,7 @@ async function login(req, res) {
     const existingUser = await user.getUserWithSameEmail();
 
     if (!existingUser) {
+        console.log('email incorrect')
         res.redirect('/login');
         return;
     };
@@ -41,6 +42,7 @@ async function login(req, res) {
     const passwordIsCorrect = await user.hasMatchingPassword(existingUser.password);
 
     if (!passwordIsCorrect) {
+        console.log('password incorrect')
         res.redirect('/login');
         return;
     };
@@ -55,5 +57,6 @@ async function login(req, res) {
 module.exports = {
     getSignup: getSignup,
     getLogin: getLogin,
-    signup: signup
+    signup: signup,
+    login: login
 };

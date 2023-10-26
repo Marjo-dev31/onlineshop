@@ -16,7 +16,7 @@ class User {
     };
 
     getUserWithSameEmail() {
-        return db.getDb.collection('users').findOne({email: this.email});
+        return db.getDb().collection('users').findOne({email: this.email});
     };
 
     async signup() {
@@ -31,8 +31,8 @@ class User {
     };
 
     hasMatchingPassword(hashedPassword) {
-        bcrypt.compare(this.password, hashedPassword) /*compare this.password (le password entré dans le form lors du login) et le password crypté*/
-    }
-}
+        return bcrypt.compare(this.password, hashedPassword) /*compare this.password (le password entré dans le form lors du login) et le password crypté*/
+    };
+};
 
 module.exports = User;
