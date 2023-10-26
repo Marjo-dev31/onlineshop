@@ -7,9 +7,11 @@ const csrf = require('csurf');
 
 const session = require('./config/sessions');
 const db = require('./data/database');
-const authRoutes = require('./routes/auth.routes');
 const CSRFTokenMiddleware = require('./middlewares/csrf.token.middleware');
 const errorHandlerMiddleware = require('./middlewares/error-handler');
+const authRoutes = require('./routes/auth.routes');
+const productsRoutes = require('./routes/products.routes');
+const baseRoutes = require('./routes/bases.routes');
 
 const app = express();
 
@@ -26,7 +28,9 @@ app.use(csrf());
 
 app.use(CSRFTokenMiddleware);
 
+app.use(baseRoutes);
 app.use(authRoutes);
+app.use(productsRoutes);
 
 app.use(errorHandlerMiddleware);
 

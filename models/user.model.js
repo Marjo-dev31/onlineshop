@@ -13,7 +13,11 @@ class User {
             postalCode: postal,
             city: city
         };
-    }
+    };
+
+    getUserWithSameEmail() {
+        return db.getDb.collection('users').findOne({email: this.email});
+    };
 
     async signup() {
         const hashedPassword = await bcrypt.hash(this.password, 12);
@@ -24,6 +28,10 @@ class User {
             name: this.name, /*le premier est au choix qui correspondra au nom de la collone dans la db*/
             address: this.address
         });
+    };
+
+    hasMatchingPassword(hashedPassword) {
+        bcrypt.compare(this.password, hashedPassword) /*compare this.password (le password entré dans le form lors du login) et le password crypté*/
     }
 }
 
