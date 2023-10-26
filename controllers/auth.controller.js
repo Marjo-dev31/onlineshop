@@ -5,6 +5,10 @@ function getSignup(req, res) {
 };
 
 async function signup(req, res) {
+if (!res.locals.isAuth) {
+return res.status('401').render('401');
+};
+
     const user = new User(
         req.body.email, 
         req.body.password, 
