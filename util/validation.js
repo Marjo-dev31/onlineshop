@@ -9,10 +9,10 @@ function userCredentialsAreValid(email, password) {
  );
 };
 
-function userIsValid(email, password, fullname, street, postal, city) {
+function userIsValid(email, password, name, street, postal, city) {
     return (
         userCredentialsAreValid(email, password) &&  
-        !isEmpty(fullname) &&
+        !isEmpty(name) &&
         !isEmpty(street) &&
         !isEmpty(postal) &&
         !isEmpty(city)
@@ -25,5 +25,5 @@ function emailIsConfirmed(email, confirmEmail) {
 
 module.export = {
     userIsValid: userIsValid,
-    emailIsConfirmed: emailIsConfirmed
+    emailIsConfirmed: emailIsConfirmed,
 };
