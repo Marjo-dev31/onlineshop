@@ -4,19 +4,18 @@ function isEmpty(value) {
 
 
 function userCredentialsAreValid(email, password) {
- return (
-    email && email.includes('@') && password && password.trim().length > 5
- );
+    const userIsValid =  !!email && !!email.includes('@') && !!password /* && password.trim().length > 5 */
+ return userIsValid
 };
 
 function userIsValid(email, password, name, street, postal, city) {
-    return (
-        userCredentialsAreValid(email, password) &&  
-        !isEmpty(name) &&
-        !isEmpty(street) &&
-        !isEmpty(postal) &&
-        !isEmpty(city)
-    );
+    const userIsValid = userCredentialsAreValid(email, password) &&  
+    !isEmpty(name) &&
+    !isEmpty(street) &&
+    !isEmpty(postal) &&
+    !isEmpty(city)
+
+    return userIsValid
 };
 
 function emailIsConfirmed(email, confirmEmail) {
