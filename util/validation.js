@@ -23,7 +23,7 @@ function emailIsConfirmed(email, confirmEmail) {
     return email === confirmEmail
 }
 
-module.export = {
+module.exports = {
     userIsValid: userIsValid,
     emailIsConfirmed: emailIsConfirmed,
 };
