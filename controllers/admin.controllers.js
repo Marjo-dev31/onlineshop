@@ -34,8 +34,15 @@ async function createNewProduct(req, res, next) {
     res.redirect('/admin/products');
 };
 
+function getUpdateProduct() {};
+
+function updateProduct() {};
+
+
 module.exports = {
     getProducts: getProducts,
     getNewProduct: getNewProduct,
-    createNewProduct: createNewProduct
+    createNewProduct: createNewProduct,
+    getUpdateProduct: getUpdateProduct,
+    updateProduct: updateProduct
 }
