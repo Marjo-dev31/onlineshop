@@ -3,9 +3,9 @@ const Product = require('../models/product.model');
 async function getProducts(req, res, next) {
     try {
         const products = await Product.findAll();
-        res.render('admin/products/all-products', {products: products});
+        res.render('admin/products/all-products', { products: products });
 
-    } catch(error) {
+    } catch (error) {
         next(error);
         return;
     };
@@ -34,9 +34,17 @@ async function createNewProduct(req, res, next) {
     res.redirect('/admin/products');
 };
 
-function getUpdateProduct() {};
+async function getUpdateProduct(req, res, next) {
+    try {
+        const product = await Product.findById(req.params.id);
+        res.render('admin/products/update-product', { product: product })
 
-function updateProduct() {};
+    } catch (error) {
+        next(error);
+    };
+};
+
+function updateProduct() { };
 
 
 module.exports = {

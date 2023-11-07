@@ -5,7 +5,12 @@
     <%-include('../../shared/includes/header.ejs') %>
         <main>
             <h1>Add new product</h1>
-            <%-include('includes/product-form', { submitPath: '/admin/products' }) %> 
+            <%-include('includes/product-form', { submitPath: '/admin/products', product: {
+                title:'',
+                summary: '',
+                price: '',
+                description: ''
+            } }) %> 
             
         </main>
 <%- include('../../shared/includes/footer.ejs') %>
