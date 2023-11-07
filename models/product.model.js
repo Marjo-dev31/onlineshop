@@ -9,8 +9,7 @@ class Product {
         this.price = +productData.price; /*le + force a enrgister en chiffre*/
         this.description = productData.description;
         this.image = productData.image;
-        this.imagePath = `product-data/images/${productData.image}`;
-        this.imageUrl = `/products/assests/images/${productData.image}`;
+        this.updateImageData();
         if (productData._id) {
             this.id = productData._id.toString();
         }
@@ -32,7 +31,7 @@ class Product {
             throw error;
         };
 
-        return product;
+        return new Product(product);
     };
 
 
@@ -45,6 +44,11 @@ class Product {
         /*to array transforme la liste complete des produits en array et map redetaille chaque product à la forme de class Product*/
     };
 
+    updateImageData() {
+        this.imagePath = `product-data/images/${this.image}`;
+        this.imageUrl = `/products/assests/images/${this.image}`;
+    }
+
     async save() {
         const productData = {
             title: this.title,
@@ -54,7 +58,22 @@ class Product {
             image: this.image
         };
 
-        await db.getDb().collection('products').insertOne(productData)
+        if (this.id) {
+            const productId = new mongodb.ObjectId(this.id);
+
+            if(!this.image) {
+                delete productData.image
+            };
+
+        db.getDb().collection('products').updateOne({ _id: productId}, {$set: productData})
+        } else {
+            await db.getDb().collection('products').insertOne(productData)
+        }
+    }
+
+    async replaceImage(newImage) {
+        this.image = newImage;
+        this.updateImageData();
     }
 };
 
