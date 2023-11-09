@@ -64,8 +64,16 @@ async function updateProduct(req, res, next) {
     res.redirect('/admin/products');
 };
 
-function deleteProduct() {
+async function deleteProduct(req, res, next) {
+    let product;
+    try {
+    product = await Product.findById(req.params.id);
+    product.remove()
 
+    } catch(error) {
+        next(error)
+    }
+    res.redirect('/admin/products')
 };
 
 
@@ -74,5 +82,6 @@ module.exports = {
     getNewProduct: getNewProduct,
     createNewProduct: createNewProduct,
     getUpdateProduct: getUpdateProduct,
-    updateProduct: updateProduct
+    updateProduct: updateProduct,
+    deleteProduct: deleteProduct
 }
