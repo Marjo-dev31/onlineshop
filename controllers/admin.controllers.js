@@ -64,6 +64,10 @@ async function updateProduct(req, res, next) {
     res.redirect('/admin/products');
 };
 
+function deleteProduct() {
+
+};
+
 
 module.exports = {
     getProducts: getProducts,
