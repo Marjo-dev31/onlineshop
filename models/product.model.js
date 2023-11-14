@@ -6,7 +6,7 @@ class Product {
     constructor(productData) {
         this.title = productData.title;
         this.summary = productData.summary;
-        this.price = +productData.price; /*le + force a enrgister en chiffre*/
+        this.price = +productData.price; /*le + force a enregister en chiffre*/
         this.description = productData.description;
         this.image = productData.image;
         this.updateImageData();

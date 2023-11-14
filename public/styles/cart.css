@@ -20,7 +20,7 @@ margin: 0;
 }
 
 .cart-product-price {
-    font-size: italic;
+    font-style: italic;
     color: var(--color-gray-300);
 }
 
