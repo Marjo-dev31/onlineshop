@@ -34,6 +34,16 @@ async function updateCartItem(event) {
     };
 
     const responseData = await response.json();
+
+    const cartItemTotalPriceElement = form.parentElement.querySelector('.cart-item-price');
+    cartItemTotalPriceElement.textContent = responseData.updatedCartData.updatedItemPrice.toFixed(2);
+
+    const cartTotalPriceElement = document.getElementById('cart-total-price');
+    cartTotalPriceElement.textContent = responseData.updatedCartData.newTotalPrice.toFixed(2);
+
+    const badgeElement = document.querySelector('.nav-items .badge');
+    badgeElement.textContent = responseData.updatedCartData.newTotalQuantity;
+
 }
 
 
