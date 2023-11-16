@@ -8,16 +8,23 @@
             <main>
                 <h1>Your Cart</h1>
                 <ul id="cart-items">
-                    <% for (const cartItem of locals.cart.items) { %> 
-                    <li>
-                        <%-include('includes/cart-item.ejs', {item: cartItem}) %> 
-                    </li>
-                    <% } %> 
+                    <% for (const cartItem of locals.cart.items) { %>
+                        <li>
+                            <%-include('includes/cart-item.ejs', {item: cartItem}) %>
+                        </li>
+                        <% } %> 
                 </ul>
                 <div id="cart-total">
-                    <p>Total: $<span id="cart-total-price"><%= locals.cart.totalPrice.toFixed(2) %></span></p>
-
-                    <button class="btn"> Buy products</button>
+                    <p>
+                        Total: $<span id="cart-total-price"><%= locals.cart.totalPrice.toFixed(2) %></span>    
+                    </p>
+                    <% if (locals.isAuth) { %>
+                        <form action="/orders" method="POST">
+                            <button class="btn">Buy products</button>
+                        </form>
+                        <% } else { %>
+                            <p id="cart-total-fallback">Please log in to buy your products!</p>
+                        <% } %>
                 </div>
             </main>
             <%- include('../../shared/includes/footer.ejs') %>
