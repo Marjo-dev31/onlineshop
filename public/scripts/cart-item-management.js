@@ -46,8 +46,11 @@ async function updateCartItem(event) {
     const cartTotalPriceElement = document.getElementById('cart-total-price');
     cartTotalPriceElement.textContent = responseData.updatedCartData.newTotalPrice.toFixed(2);
 
-    const badgeElement = document.querySelector('.nav-items .badge');
-    badgeElement.textContent = responseData.updatedCartData.newTotalQuantity;
+    const badgeElements = document.querySelectorAll('.nav-items .badge');
+
+    for (const badgeElement of badgeElements) {
+        badgeElement.textContent = responseData.updatedCartData.newTotalQuantity;
+    }
 
 }
 
