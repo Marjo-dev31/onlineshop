@@ -46,7 +46,7 @@ app.use(productsRoutes);
 app.use('/cart', cartRoutes);
 
 app.use(protectRoutesMiddleware);
-app.use('/order', orderRoutes);
+app.use('/orders', orderRoutes);
 app.use('/admin', adminRoutes);
 
 app.use(errorHandlerMiddleware);
